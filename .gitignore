@@ -1,0 +1,69 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories (already good)
+node_modules/
+.pnpm-store/
+bun.lockb  # if you're using Bun
+
+# Build / output directories
+dist
+dist-ssr
+build
+.out
+coverage
+.next          # Next.js
+.nuxt           # Nuxt.js
+.output         # Nitro / Nuxt
+.vercel          # Vercel deployments
+.netlify        # Netlify
+
+# Environment and local config files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor / IDE directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json   # optional: keep if you want to commit workspace settings
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Testing / coverage
+.nyc_output
+.coverage
+coverage.lcov
+
+# Lockfiles (optional: commit them usually, but some teams ignore)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Misc
+*.local

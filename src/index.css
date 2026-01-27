@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom metric colors */
+    --temperature: 35 92% 60%;
+    --temperature-glow: 35 92% 50%;
+    --air-quality: 168 84% 45%;
+    --air-quality-glow: 168 84% 35%;
+    --noise: 262 83% 65%;
+    --noise-glow: 262 83% 55%;
+
+    /* Status colors */
+    --status-good: 142 76% 45%;
+    --status-warning: 45 93% 55%;
+    --status-critical: 0 84% 60%;
+
+    /* Gradients */
+    --gradient-temperature: linear-gradient(135deg, hsl(35 92% 60%), hsl(15 90% 55%));
+    --gradient-air: linear-gradient(135deg, hsl(168 84% 45%), hsl(180 70% 40%));
+    --gradient-noise: linear-gradient(135deg, hsl(262 83% 65%), hsl(280 80% 55%));
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%), hsl(222 47% 7%));
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .metric-card {
+    @apply relative overflow-hidden rounded-xl border border-border bg-card p-6;
+    background: var(--gradient-card);
+  }
+
+  .metric-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  }
+
+  .metric-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .metric-card-temperature::before {
+    background: radial-gradient(circle at top right, hsl(var(--temperature) / 0.1), transparent 50%);
+  }
+
+  .metric-card-air::before {
+    background: radial-gradient(circle at top right, hsl(var(--air-quality) / 0.1), transparent 50%);
+  }
+
+  .metric-card-noise::before {
+    background: radial-gradient(circle at top right, hsl(var(--noise) / 0.1), transparent 50%);
+  }
+
+  .status-indicator {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium;
+  }
+
+  .status-good {
+    @apply bg-[hsl(var(--status-good)/0.15)] text-[hsl(var(--status-good))];
+  }
+
+  .status-warning {
+    @apply bg-[hsl(var(--status-warning)/0.15)] text-[hsl(var(--status-warning))];
+  }
+
+  .status-critical {
+    @apply bg-[hsl(var(--status-critical)/0.15)] text-[hsl(var(--status-critical))];
+  }
+
+  .glow-temperature {
+    box-shadow: 0 0 40px -10px hsl(var(--temperature) / 0.4);
+  }
+
+  .glow-air {
+    box-shadow: 0 0 40px -10px hsl(var(--air-quality) / 0.4);
+  }
+
+  .glow-noise {
+    box-shadow: 0 0 40px -10px hsl(var(--noise) / 0.4);
+  }
+}
+
+@layer utilities {
+  .text-temperature {
+    color: hsl(var(--temperature));
+  }
+
+  .text-air-quality {
+    color: hsl(var(--air-quality));
+  }
+
+  .text-noise {
+    color: hsl(var(--noise));
+  }
+
+  .bg-temperature {
+    background-color: hsl(var(--temperature));
+  }
+
+  .bg-air-quality {
+    background-color: hsl(var(--air-quality));
+  }
+
+  .bg-noise {
+    background-color: hsl(var(--noise));
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
